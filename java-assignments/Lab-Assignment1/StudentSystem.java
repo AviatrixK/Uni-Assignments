@@ -32,7 +32,7 @@ class Student {
     public void displayStudentDetails() {
         System.out.println("Student ID: " + this.studentID);
         System.out.println("Name: " + this.studentName);
-        System.out.println("Major: " + this.major);
+        System.out.println("Course: " + this.major);
         System.out.println("Score: " + this.score);
         System.out.println("Grade: " + this.letterGrade);
         System.out.println("------------------------------");
