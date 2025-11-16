@@ -1,4 +1,4 @@
-package service;
+package java_assignments.LabAssignment2.StudentManagementSystem.service;
 
 import model.Student;
 

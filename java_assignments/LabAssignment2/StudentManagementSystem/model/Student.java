@@ -1,4 +1,4 @@
-package model;
+package java_assignments.LabAssignment2.StudentManagementSystem.model;
 
 /**
  * Student class extending Person with additional fields

@@ -1,4 +1,4 @@
-import model.*;
+package java_assignments.LabAssignment2.StudentManagementSystem;
 import service.*;
 
 public class Main {

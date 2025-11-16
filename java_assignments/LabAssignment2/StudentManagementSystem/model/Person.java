@@ -1,4 +1,4 @@
-package model;
+package java_assignments.LabAssignment2.StudentManagementSystem.model;
 
 /**
  * Abstract class representing a Person with common fields
