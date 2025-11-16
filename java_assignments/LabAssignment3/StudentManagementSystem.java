@@ -8,8 +8,7 @@ import java.util.InputMismatchException;
 public class StudentManagementSystem {
     private static Scanner scanner = new Scanner(System.in);
     private static StudentManager studentManager = new StudentManager();
-    
-    // Main method
+     
     public static void main(String[] args) {
         System.out.println("=== Student Management System ===");
         System.out.println("================================\n");
