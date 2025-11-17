@@ -1,5 +1,7 @@
 package java_assignments.LabAssignment2.StudentManagementSystem;
-import service.*;
+import java_assignments.LabAssignment2.StudentManagementSystem.model.Student;
+import java_assignments.LabAssignment2.StudentManagementSystem.model.Person;
+import java_assignments.LabAssignment2.StudentManagementSystem.service.*;
 
 public class Main {
     public static void main(String[] args) {

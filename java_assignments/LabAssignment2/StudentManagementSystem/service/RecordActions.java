@@ -1,6 +1,6 @@
 package java_assignments.LabAssignment2.StudentManagementSystem.service;
 
-import model.Student;
+import java_assignments.LabAssignment2.StudentManagementSystem.model.Student;
 
 /**
  * Interface defining CRUD operations for student records
