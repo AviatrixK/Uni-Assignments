@@ -1,0 +1,6 @@
+{
+  "kdc_type": "symmetric",
+  "key_algorithm": "AES-256",
+  "asymmetric_algorithm": "RSA-2048",
+  "key_rotation_period": "90 days"
+}

@@ -1,0 +1,64 @@
+{
+  "chain": [
+    {
+      "index": 0,
+      "timestamp": 1763478985.2372139,
+      "transactions": [
+        {
+          "type": "genesis",
+          "data": "Genesis Block"
+        }
+      ],
+      "previous_hash": "0",
+      "merkle_root": "d08c0d8a98099fe454f8a903398b5b268ea29cb4b7f2f8b09836fcb61907dfe4",
+      "nonce": 1329,
+      "hash": "000fc4e95e02b620578bcbf3cf5f6554aefd3350c3452acad715ebd01d9df9c0"
+    },
+    {
+      "index": 1,
+      "timestamp": 1763478985.736782,
+      "transactions": [
+        {
+          "from": "e7fd730455ccf08b2e593c86fa4eecf45bf3c356",
+          "to": "7e6569e4d591188a851587a47d252a7a0e113ebb",
+          "amount": 30,
+          "timestamp": 1763478985.7237692,
+          "signature": "RVROvOZO/2RHGTIMTguhDoU9s/VN4EkA8UbeBHbA/57pEJs20ERLbaVVOrWB5Jhbr3TtqbFRU5CMm10me6ayGijQJrqil/I4yzfQ/meKDG3Vy9EswNgO/AK6nj+4au3FX0F5/PaE09DoodFGomnkeKSoigLidBhafhamYg5A9mRQUI/2xMd+JRoUMyXEBKADp97HSPSDm3SHUMjEhk6JYrKaUJmuL67KAaCUIkdW5bD3qvivwQmul2mD6fHTQ27LJhmPmdG8KTDnY9Aeg+iqN1O4+nkkpdGkQ2u7SERalTxGSJaEGabLwEHHpSrSDZOIFGZRjAQnO7kmNl9posJqGQ=="
+        },
+        {
+          "from": "e7fd730455ccf08b2e593c86fa4eecf45bf3c356",
+          "to": "7e6569e4d591188a851587a47d252a7a0e113ebb",
+          "amount": 20,
+          "timestamp": 1763478985.7307832
+        }
+      ],
+      "previous_hash": "000fc4e95e02b620578bcbf3cf5f6554aefd3350c3452acad715ebd01d9df9c0",
+      "merkle_root": "ddeebf33c0ad3f7d90d1b73ec88f8add6f3a98ee9834c79c76e8742aa928c8a2",
+      "nonce": 1273,
+      "hash": "0003790a0bb024cd89acbdef3cad25fd023a89e82669d9b6787229100f722bce"
+    },
+    {
+      "index": 2,
+      "timestamp": 1763478985.7801933,
+      "transactions": [
+        {
+          "from": "NETWORK",
+          "to": "2036ceb1109c22144bd8c8ab621545694a30201c",
+          "amount": 50,
+          "type": "mining_reward"
+        },
+        {
+          "from": "7e6569e4d591188a851587a47d252a7a0e113ebb",
+          "to": "e7fd730455ccf08b2e593c86fa4eecf45bf3c356",
+          "amount": 10,
+          "timestamp": 1763478985.7801933
+        }
+      ],
+      "previous_hash": "0003790a0bb024cd89acbdef3cad25fd023a89e82669d9b6787229100f722bce",
+      "merkle_root": "0dd89228c1b9f8beac781a9147244fcf17cf2729737f348e446f39017f89fbf6",
+      "nonce": 752,
+      "hash": "0008a3c8a9f6ebb2c051342d25d661ca72905fe939271333324fc540a22603c3"
+    }
+  ],
+  "difficulty": 3
+}
