@@ -37,6 +37,11 @@ class Student {
         System.out.println("Grade: " + this.letterGrade);
         System.out.println("------------------------------");
     }
+
+    public char[] toCSV() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toCSV'");
+    }
 }
 
 public class StudentSystem {
