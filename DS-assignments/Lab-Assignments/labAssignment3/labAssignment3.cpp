@@ -4,9 +4,9 @@
 #include <algorithm>
 #include <chrono>
 #include <iomanip>
+#include <limits>
 using namespace std;
 
-// Student Record ADT
 class Student {
 public:
     int studentID;
@@ -14,7 +14,6 @@ public:
     float grade;
     string courseDetails;
     
-    // Constructor
     Student() {
         studentID = 0;
         studentName = "";
@@ -29,7 +28,6 @@ public:
         courseDetails = course;
     }
     
-    // Display student details
     void display() {
         cout << "ID: " << studentID 
              << " | Name: " << studentName 
@@ -38,7 +36,6 @@ public:
     }
 };
 
-// Node for hash table collision resolution (chaining)
 class HashNode {
 public:
     Student data;
@@ -50,35 +47,40 @@ public:
     }
 };
 
-// Hash Table Implementation
 class HashTable {
 private:
     static const int TABLE_SIZE = 10;
     HashNode* table[TABLE_SIZE];
     
-    // Hash function
     int hashFunction(int key) {
         return key % TABLE_SIZE;
     }
     
 public:
-    // Constructor
     HashTable() {
         for (int i = 0; i < TABLE_SIZE; i++) {
             table[i] = nullptr;
         }
     }
     
-    // Insert student into hash table
+    ~HashTable() {
+        for (int i = 0; i < TABLE_SIZE; i++) {
+            HashNode* current = table[i];
+            while (current != nullptr) {
+                HashNode* temp = current;
+                current = current->next;
+                delete temp;
+            }
+        }
+    }
+    
     void insertStudent(Student student) {
         int index = hashFunction(student.studentID);
         HashNode* newNode = new HashNode(student);
         
-        // If no collision
         if (table[index] == nullptr) {
             table[index] = newNode;
         }
-        // Handle collision using chaining
         else {
             HashNode* temp = table[index];
             while (temp->next != nullptr) {
@@ -86,10 +88,8 @@ public:
             }
             temp->next = newNode;
         }
-        cout << "Student inserted successfully!" << endl;
     }
     
-    // Search student by ID in hash table
     Student* searchByID(int id) {
         int index = hashFunction(id);
         HashNode* temp = table[index];
@@ -103,7 +103,6 @@ public:
         return nullptr;
     }
     
-    // Display hash table
     void display() {
         cout << "\n--- Hash Table Contents ---" << endl;
         for (int i = 0; i < TABLE_SIZE; i++) {
@@ -122,37 +121,55 @@ public:
     }
 };
 
-// Student Performance Tracker System
 class StudentPerformanceTracker {
 private:
     vector<Student> students;
     HashTable hashTable;
     
 public:
-    // Add a new student record
     void addStudentRecord() {
         int id;
         string name, course;
         float grade;
         
         cout << "\n--- Add New Student ---" << endl;
-        cout << "Enter Student ID: ";
-        cin >> id;
-        cin.ignore();
+        
+        while (true) {
+            cout << "Enter Student ID: ";
+            if (cin >> id) {
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                break;
+            } else {
+                cout << "Invalid input for Student ID. Please enter a number." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+
         cout << "Enter Student Name: ";
         getline(cin, name);
-        cout << "Enter Grade: ";
-        cin >> grade;
-        cin.ignore();
+        
+        while (true) {
+            cout << "Enter Grade: ";
+            if (cin >> grade) {
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                break;
+            } else {
+                cout << "Invalid input for Grade. Please enter a number." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
+
         cout << "Enter Course Details: ";
         getline(cin, course);
         
         Student newStudent(id, name, grade, course);
         students.push_back(newStudent);
         hashTable.insertStudent(newStudent);
+        cout << "Student inserted successfully!" << endl;
     }
     
-    // Sequential Search by Name
     void sequentialSearchByName(string name) {
         cout << "\n--- Sequential Search Results ---" << endl;
         bool found = false;
@@ -169,11 +186,9 @@ public:
         }
     }
     
-    // Binary Search by ID (requires sorted array)
     void binarySearchByID(int id) {
         cout << "\n--- Binary Search Results ---" << endl;
         
-        // First, sort by ID
         vector<Student> sortedStudents = students;
         sort(sortedStudents.begin(), sortedStudents.end(), 
              [](Student a, Student b) { return a.studentID < b.studentID; });
@@ -203,7 +218,6 @@ public:
         }
     }
     
-    // Bubble Sort by Grades
     vector<Student> bubbleSort(vector<Student> arr) {
         int n = arr.size();
         for (int i = 0; i < n - 1; i++) {
@@ -216,7 +230,6 @@ public:
         return arr;
     }
     
-    // Insertion Sort by Grades
     vector<Student> insertionSort(vector<Student> arr) {
         int n = arr.size();
         for (int i = 1; i < n; i++) {
@@ -232,7 +245,6 @@ public:
         return arr;
     }
     
-    // Merge Sort Helper Functions
     void merge(vector<Student>& arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
@@ -284,7 +296,6 @@ public:
         return arr;
     }
     
-    // Quick Sort Helper Functions
     int partition(vector<Student>& arr, int low, int high) {
         float pivot = arr[high].grade;
         int i = (low - 1);
@@ -312,7 +323,6 @@ public:
         return arr;
     }
     
-    // Heap Sort Helper Functions
     void heapify(vector<Student>& arr, int n, int i) {
         int largest = i;
         int left = 2 * i + 1;
@@ -333,11 +343,9 @@ public:
     vector<Student> heapSort(vector<Student> arr) {
         int n = arr.size();
         
-        // Build heap
         for (int i = n / 2 - 1; i >= 0; i--)
             heapify(arr, n, i);
         
-        // Extract elements from heap
         for (int i = n - 1; i > 0; i--) {
             swap(arr[0], arr[i]);
             heapify(arr, i, 0);
@@ -345,7 +353,6 @@ public:
         return arr;
     }
     
-    // Sort by grades using selected algorithm
     void sortByGrades(int choice) {
         if (students.empty()) {
             cout << "No students to sort!" << endl;
@@ -386,10 +393,9 @@ public:
         }
     }
     
-    // Compare sorting algorithms time complexity
     void compareSortingComplexity() {
-        if (students.size() < 2) {
-            cout << "Need at least 2 students to compare sorting algorithms!" << endl;
+        if (students.empty()) {
+            cout << "No students to compare sorting algorithms!" << endl;
             return;
         }
         
@@ -400,35 +406,30 @@ public:
         
         vector<Student> testArray = students;
         
-        // Bubble Sort
         auto start = chrono::high_resolution_clock::now();
         bubbleSort(testArray);
         auto end = chrono::high_resolution_clock::now();
         auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
         cout << setw(20) << "Bubble Sort" << setw(20) << duration.count() << endl;
         
-        // Insertion Sort
         start = chrono::high_resolution_clock::now();
         insertionSort(testArray);
         end = chrono::high_resolution_clock::now();
         duration = chrono::duration_cast<chrono::microseconds>(end - start);
         cout << setw(20) << "Insertion Sort" << setw(20) << duration.count() << endl;
         
-        // Merge Sort
         start = chrono::high_resolution_clock::now();
         mergeSort(testArray);
         end = chrono::high_resolution_clock::now();
         duration = chrono::duration_cast<chrono::microseconds>(end - start);
         cout << setw(20) << "Merge Sort" << setw(20) << duration.count() << endl;
         
-        // Quick Sort
         start = chrono::high_resolution_clock::now();
         quickSort(testArray);
         end = chrono::high_resolution_clock::now();
         duration = chrono::duration_cast<chrono::microseconds>(end - start);
         cout << setw(20) << "Quick Sort" << setw(20) << duration.count() << endl;
         
-        // Heap Sort
         start = chrono::high_resolution_clock::now();
         heapSort(testArray);
         end = chrono::high_resolution_clock::now();
@@ -436,14 +437,13 @@ public:
         cout << setw(20) << "Heap Sort" << setw(20) << duration.count() << endl;
         
         cout << "\nTime Complexity Analysis:" << endl;
-        cout << "Bubble Sort:    O(n²)" << endl;
-        cout << "Insertion Sort: O(n²)" << endl;
-        cout << "Merge Sort:     O(n log n)" << endl;
-        cout << "Quick Sort:     O(n log n) average, O(n²) worst" << endl;
-        cout << "Heap Sort:      O(n log n)" << endl;
+        cout << "Bubble Sort: O(n\u00b2)" << endl;
+        cout << "Insertion Sort: O(n\u00b2)" << endl;
+        cout << "Merge Sort: O(n log n)" << endl;
+        cout << "Quick Sort: O(n log n) average, O(n\u00b2) worst" << endl;
+        cout << "Heap Sort: O(n log n)" << endl;
     }
     
-    // Display all students
     void displayAllStudents() {
         if (students.empty()) {
             cout << "No students in the system!" << endl;
@@ -456,16 +456,29 @@ public:
         }
     }
     
-    // Search menu
+    void displayHashTable() {
+        hashTable.display();
+    }
+    
     void searchMenu() {
         int choice;
-        cout << "\n--- Search Menu ---" << endl;
-        cout << "1. Sequential Search by Name" << endl;
-        cout << "2. Binary Search by ID" << endl;
-        cout << "3. Hash Table Search by ID" << endl;
-        cout << "Enter choice: ";
-        cin >> choice;
-        cin.ignore();
+        
+        while (true) {
+            cout << "\n--- Search Menu ---" << endl;
+            cout << "1. Sequential Search by Name" << endl;
+            cout << "2. Binary Search by ID" << endl;
+            cout << "3. Hash Table Search by ID" << endl;
+            cout << "Enter choice: ";
+            
+            if (cin >> choice) {
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                break;
+            } else {
+                cout << "Invalid choice. Please enter a number from the menu." << endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+        }
         
         switch (choice) {
             case 1: {
@@ -477,15 +490,33 @@ public:
             }
             case 2: {
                 int id;
-                cout << "Enter student ID: ";
-                cin >> id;
+                while (true) {
+                    cout << "Enter student ID: ";
+                    if (cin >> id) {
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        break;
+                    } else {
+                        cout << "Invalid input. Please enter a number." << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                }
                 binarySearchByID(id);
                 break;
             }
             case 3: {
                 int id;
-                cout << "Enter student ID: ";
-                cin >> id;
+                while (true) {
+                    cout << "Enter student ID: ";
+                    if (cin >> id) {
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        break;
+                    } else {
+                        cout << "Invalid input. Please enter a number." << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                }
                 Student* found = hashTable.searchByID(id);
                 if (found != nullptr) {
                     cout << "\n--- Hash Table Search Results ---" << endl;
@@ -500,7 +531,6 @@ public:
         }
     }
     
-    // Add sample data for testing
     void addSampleData() {
         students.push_back(Student(101, "Alice Johnson", 85.5, "Computer Science"));
         students.push_back(Student(102, "Bob Smith", 92.3, "Mathematics"));
@@ -511,7 +541,6 @@ public:
         students.push_back(Student(107, "Grace Lee", 91.6, "Mathematics"));
         students.push_back(Student(108, "Henry Wilson", 76.8, "Physics"));
         
-        // Add all to hash table
         for (int i = 0; i < students.size(); i++) {
             hashTable.insertStudent(students[i]);
         }
@@ -520,13 +549,12 @@ public:
     }
 };
 
-// Main function
 int main() {
     StudentPerformanceTracker tracker;
     int choice;
     
     cout << "========================================" << endl;
-    cout << "    STUDENT PERFORMANCE TRACKER SYSTEM  " << endl;
+    cout << "     STUDENT PERFORMANCE TRACKER SYSTEM  " << endl;
     cout << "========================================" << endl;
     
     while (true) {
@@ -541,7 +569,13 @@ int main() {
         cout << "8. Add Sample Data" << endl;
         cout << "9. Exit" << endl;
         cout << "Enter your choice: ";
-        cin >> choice;
+        
+        if (!(cin >> choice)) {
+            cout << "Invalid input. Please enter a number from the menu." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
         
         switch (choice) {
             case 1:
@@ -561,7 +595,14 @@ int main() {
                 cout << "4. Quick Sort" << endl;
                 cout << "5. Heap Sort" << endl;
                 cout << "Enter choice: ";
-                cin >> sortChoice;
+                
+                if (!(cin >> sortChoice)) {
+                    cout << "Invalid input for sort choice. Please enter a number." << endl;
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    break;
+                }
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 tracker.sortByGrades(sortChoice);
                 break;
             }
@@ -579,11 +620,9 @@ int main() {
                 tracker.displayAllStudents();
                 break;
                 
-            case 7: {
-                HashTable temp;
-                temp.display();
+            case 7:
+                tracker.displayHashTable();
                 break;
-            }
             
             case 8:
                 tracker.addSampleData();
