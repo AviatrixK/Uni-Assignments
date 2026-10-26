@@ -1,0 +1,29 @@
+message_id,message,correct_category,predicted_category,matched_keywords,keyword_score,correct,risk_level,recommended_action
+1,The department meeting is scheduled for 2 PM in Room 301.,Safe,Safe,,0,True,Low,Continue normal caution.
+2,Your account will be suspended. Click here and verify your password urgently.,Phishing,Phishing,"click here, verify, password, urgent",4,True,High,Do not click/open; isolate if required and report.
+3,The attached executable file contains a trojan and may infect the computer.,Malware,Malware,"trojan, executable",2,True,High,Do not click/open; isolate if required and report.
+4,Your files have been encrypted. Pay bitcoin to restore files.,Ransomware,Ransomware,"encrypted, bitcoin, restore files",3,True,High,Do not click/open; isolate if required and report.
+5,Library books must be returned before Friday.,Safe,Safe,,0,True,Low,Continue normal caution.
+6,Congratulations! You won a prize. Login now to claim it.,Phishing,Phishing,"prize, login",2,True,High,Do not click/open; isolate if required and report.
+7,Antivirus detected spyware in the downloaded attachment.,Malware,Malware,"virus, attachment, spyware",3,True,High,Do not click/open; isolate if required and report.
+8,Locked files will be released only after ransom payment.,Ransomware,Ransomware,"ransom, locked files",2,True,High,Do not click/open; isolate if required and report.
+9,Your monthly attendance report is available on the official portal.,Safe,Safe,,0,True,Low,Continue normal caution.
+10,Urgent bank alert: verify account and share OTP immediately.,Phishing,Phishing,"verify, urgent, otp, bank",4,True,High,Do not click/open; isolate if required and report.
+11,A virus was found in the unknown email attachment.,Malware,Malware,"virus, attachment",2,True,High,Do not click/open; isolate if required and report.
+12,All documents are encrypted and a payment demand is displayed.,Ransomware,Ransomware,"encrypted, payment demand",2,True,High,Do not click/open; isolate if required and report.
+13,The examination timetable has been uploaded by the university.,Safe,Safe,,0,True,Low,Continue normal caution.
+14,Click here to reset your password because unusual activity was detected.,Phishing,Phishing,"click here, password",2,True,High,Do not click/open; isolate if required and report.
+15,The system is infected with malware after running an unknown program.,Malware,Malware,"malware, infected",2,True,High,Do not click/open; isolate if required and report.
+16,A ransom note asks for payment to unlock the database.,Ransomware,Ransomware,"ransom, unlock",2,True,High,Do not click/open; isolate if required and report.
+17,Please submit the assignment through the official learning portal.,Safe,Safe,,0,True,Low,Continue normal caution.
+18,Verify your email account now or it will be blocked.,Phishing,Phishing,"verify, blocked",2,True,High,Do not click/open; isolate if required and report.
+19,Security software detected a suspicious trojan executable.,Malware,Malware,"trojan, executable",2,True,High,Do not click/open; isolate if required and report.
+20,The attacker encrypted shared files and requested bitcoin.,Ransomware,Ransomware,"encrypted, bitcoin",2,True,High,Do not click/open; isolate if required and report.
+21,The sports committee meeting will be held tomorrow morning.,Safe,Safe,,0,True,Low,Continue normal caution.
+22,Your package is waiting. Click here and enter bank details.,Phishing,Phishing,"click here, bank",2,True,High,Do not click/open; isolate if required and report.
+23,A malicious attachment installed spyware on the test machine.,Malware,Malware,"attachment, spyware",2,True,High,Do not click/open; isolate if required and report.
+24,Files are locked and cannot be opened until payment is made.,Ransomware,Safe,,0,False,Low,Continue normal caution.
+25,The faculty development programme starts next Monday.,Safe,Safe,,0,True,Low,Continue normal caution.
+26,Password expiry notice: login using this link to keep your account active.,Phishing,Phishing,"password, login",2,True,High,Do not click/open; isolate if required and report.
+27,The antivirus quarantined an infected executable file.,Malware,Malware,"virus, infected, executable",3,True,High,Do not click/open; isolate if required and report.
+28,A payment demand appeared after all project files were encrypted.,Ransomware,Ransomware,"encrypted, payment demand",2,True,High,Do not click/open; isolate if required and report.
