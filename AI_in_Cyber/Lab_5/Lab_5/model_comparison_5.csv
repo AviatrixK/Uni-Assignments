@@ -1,0 +1,4 @@
+Module,Result
+Rule-Based AI,"['Safe', 'Phishing', 'Safe', 'Safe', 'Safe']"
+Decision Tree,"['Normal', 'Normal', 'Suspicious', 'Suspicious', 'Normal']"
+Neural Network,"['Normal', 'Normal', 'Suspicious', 'Suspicious', 'Normal']"
